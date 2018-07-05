@@ -1,0 +1,22 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: zhenghao
+  Date: 2018/7/5
+  Time: 07:41
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:sf="http://www.springframework.org/tags/form"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <html>
+    <head><title>Show Order</title></head>
+    <body>
+        <sf:form>
+            <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
+            <input type="submit" class="button" name="_eventId_createPizza" value="createPizza"/>
+            <input type="submit" class="button" name="_eventId_checkout" value="checkout"/>
+            <input type="submit" class="button" name="_eventId_cancel" value="cancel"/>
+        </sf:form>
+    </body>
+    </html>
+</jsp:root>

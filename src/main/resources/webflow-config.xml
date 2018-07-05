@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:flow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 流程执行器负责创建和执行流程 -->
+    <flow:flow-executor id="flowExecutor" flow-registry="flowRegistry" />
+
+    <!-- 流程注册表负责加载流程定义，让流程执行器使用 -->
+    <flow:flow-registry id="flowRegistry" base-path="/WEB-INF" flow-builder-services="flowBuilderServices">
+        <!--<flow:flow-location-pattern value="*-flow.xml"  />-->
+        <!-- 或者直接指定流程定义文件 -->
+        <!--<flow:flow-location path="" />-->
+        <flow:flow-location id="pizza" path="pizza-flow.xml" />
+        <flow:flow-location id="customer" path="customer-flow.xml" />
+        <flow:flow-location id="order" path="order-flow.xml" />
+        <flow:flow-location id="payment" path="payment-flow.xml" />
+    </flow:flow-registry>
+
+    <!--Web Flow 中的视图通过 MVC 框架的视图技术来呈现 -->
+    <flow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
+
+    <!-- 指明 MVC 框架的 view resolver ，用于通过 view 名查找资源 -->
+    <bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+        <property name="viewResolvers" ref="viewResolver" />
+    </bean>
+
+</beans>

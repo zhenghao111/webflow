@@ -1,0 +1,31 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: zhenghao
+  Date: 2018/7/4
+  Time: 21:28
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:s="http://www.springframework.org/tags"
+          xmlns:sf="http://www.springframework.org/tags/form"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <html>
+    <head><title>Customer Registration</title></head>
+    <body>
+        <sf:form commandName="customer">
+            <input type="hidden" name="_flowExecutionKey"
+            value="${flowExecutionKey}"/>
+
+            <b>Phone Number:</b><sf:input path="phoneNumber" /><br/>
+            <b>Name:</b><sf:input path="name" /><br/>
+            <b>Address:</b><sf:input path="address" /><br/>
+            <b>City:</b><sf:input path="city" /><br/>
+            <b>State:</b><sf:input path="state" /><br/>
+            <b>Zip Code:</b><sf:input path="zipCode" /><br/>
+            <input type="submit" name="_eventId_submit" value="Submit"/>
+            <input type="submit" name="_eventId_cancel" value="Cancel"/>
+        </sf:form>
+    </body>
+    </html>
+</jsp:root>

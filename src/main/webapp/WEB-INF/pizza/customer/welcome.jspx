@@ -1,0 +1,25 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: zhenghao
+  Date: 2018/7/4
+  Time: 21:13
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:sf="http://www.springframework.org/tags/form"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <html>
+    <head><title>Welcome to Spizza</title></head>
+    <body>
+        <sf:form>
+            <!-- 流程执行的key -->
+            <input type="hidden" name="_flowExecutionKey"
+                    value="${flowExecutionKey}"/> <br/>
+            <input type="text" name="phoneNumber" />
+            <!-- 触发phoneEntered事件 -->
+            <input type="submit" name="_eventId_phoneEntered"
+                value="Lookup Customer"/>
+        </sf:form>
+    </body>
+    </html>
+</jsp:root>

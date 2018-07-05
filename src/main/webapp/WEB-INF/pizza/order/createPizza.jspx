@@ -1,0 +1,29 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: zhenghao
+  Date: 2018/7/5
+  Time: 07:41
+  To change this template use File | Settings | File Templates.
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:sf="http://www.springframework.org/tags/form"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <html>
+    <head><title>Create Pizza</title></head>
+    <body>
+        <sf:form commandName="pizza">
+            <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
+            <b>Size:</b><br/>
+            <sf:radiobutton path="size" label="Small" value="SMALL"/><br/>
+            <sf:radiobutton path="size" label="Medium" value="MEDIUM" /><br/>
+            <sf:radiobutton path="size" label="Large" value="LARGE" /><br/>
+            <b>Topping:</b><br/>
+            <sf:checkboxes path="toppings" items="${toppingList}"
+                           delimiter="&lt;br/&gt;" /><br/>
+            <input type="submit" class="button" name="_eventId_addPizza" value="Continue"/>
+            <input type="submit" class="button" name="_eventId_cancel" value="Cancel"/>
+        </sf:form>
+
+    </body>
+    </html>
+</jsp:root>

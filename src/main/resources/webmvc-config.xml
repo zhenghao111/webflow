@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pizza/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- FlowHandlerMapping将流程请求定向到Spring Web Flow上，请求URL映射到流程上 -->
+    <bean id="flowHandlerMapping" class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <property name="flowRegistry" ref="flowRegistry" />
+        <property name="defaultHandler">
+            <!-- UrlFilenameViewController 会将 "/index" 这样的请求映射成名为 "index" 的视图 -->
+            <bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+        </property>
+    </bean>
+
+    <!-- FlowHandlerAdapter等同于控制器，响应请求,是DispathcherServlet和Sping Web Flow之间的桥梁，处理流程请求、管理基于这些请求的流程 -->
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+        <!-- 为所处理的请求执行流程 -->
+        <property name="flowExecutor" ref="flowExecutor" />
+    </bean>
+
+</beans>
